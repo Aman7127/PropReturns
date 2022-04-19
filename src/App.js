@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import stories from "./storydata";
+import Stories from 'react-insta-stories'
+import Header from "./components/Header"
+import "../src/App.css";
+
+
 
 function App() {
   return (
+    <>
+    <Header />
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="stories">
+				<Stories   //npm package (react-insta-stories)
+					keyboardNavigation
+					//defaultInterval={8000}
+					stories={stories}
+					onStoryEnd={(s, st) => console.log('story ended', s, st)}
+					onAllStoriesEnd={(s, st) => console.log('all stories ended', s, st)}
+					onStoryStart={(s, st) => console.log('story started', s, st)}
+					storyContainerStyles={{ borderRadius: 8, overflow: 'hidden' }}
+				/>
+			</div>
     </div>
+    </>
   );
 }
 
